@@ -23,7 +23,7 @@
                         <archive>
                             <manifest>
                                 <addClasspath>true</addClasspath>
-                                <mainClass>org.example.IntroToLogs</mainClass>
+                                <mainClass>org.question1.IntroToLogs</mainClass>
                             </manifest>
                         </archive>
                         <descriptorRefs>
