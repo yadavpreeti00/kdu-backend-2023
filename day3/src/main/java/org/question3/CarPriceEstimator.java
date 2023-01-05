@@ -1,5 +1,4 @@
 package org.question3;
-
 import java.time.LocalDate;
 
 public class CarPriceEstimator {
@@ -26,7 +25,7 @@ public class CarPriceEstimator {
 
         if(ageOfCar<=10)
         {
-            salePrice-=0.05*salePrice*ageOfCar;
+            salePrice-=(0.05*salePrice*ageOfCar);
         }
         else
         {
@@ -40,7 +39,7 @@ public class CarPriceEstimator {
         //      if car does NOT have atleast two airbags AND abs AND ebd
         //              then reduce price by $1000
 
-        if(airBagsCount<2 && hasAbs==false && hasEbd==false)
+        if(!(airBagsCount>=2  && hasAbs==true && hasEbd==true))
         {
             salePrice-=1000;
         }
