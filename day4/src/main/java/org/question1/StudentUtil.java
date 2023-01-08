@@ -77,4 +77,20 @@ public class StudentUtil {
         return studentBygpa;
     }
 
+    public static void main(String[] args){
+
+        double lower=3.2;
+        double higher=3.5;
+        int[] studentIdList={1001,1002};
+        char[][] studentsGrades={ { 'A', 'A', 'A', 'B' }, { 'A', 'B', 'B' } };
+
+        int[] result=getStudentsByGPA(lower,higher,studentIdList,studentsGrades);
+
+        for(int i:result)
+        {
+            System.out.println(i);
+        }
+
+    }
+
 }
