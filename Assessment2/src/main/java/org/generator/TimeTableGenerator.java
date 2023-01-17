@@ -35,11 +35,12 @@ public class TimeTableGenerator
 
                 String teamHome=teams.get(i);
                 String teamAway=teams.get(j);
-                String ground=teams.get(i);
+                String ground1=teams.get(i);
+                String ground2=teams.get(j);
 
-                matchesList.add(new Match(matchNumber,matchDate,matchTime1,teamHome,teamAway,ground));
+                matchesList.add(new Match(matchNumber,matchDate,matchTime1,teamHome,teamAway,ground1));
                 matchNumber++;
-                matchesList.add(new Match(matchNumber,matchDate,matchTime2,teamAway,teamHome,ground));
+                matchesList.add(new Match(matchNumber,matchDate,matchTime2,teamAway,teamHome,ground2));
                 matchNumber++;
                 startDate=startDate.plusDays(1);
             }
