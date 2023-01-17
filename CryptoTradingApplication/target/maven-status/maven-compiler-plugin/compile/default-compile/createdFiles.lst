@@ -1,0 +1,6 @@
+org/mains/Coin.class
+org/mains/CSVReader.class
+org/mains/Transaction.class
+org/mains/Main.class
+org/mains/JSONReader.class
+org/mains/Trader.class
