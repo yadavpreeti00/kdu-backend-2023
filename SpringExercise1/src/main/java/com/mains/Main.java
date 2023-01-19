@@ -1,36 +1,22 @@
 package com.mains;
 
-import com.config.AppConfig;
-import com.example.*;
+import com.speaker.SpeakerService;
+import com.tyre.TyreService;
+import com.vehicle.VehicleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
-
-
 	public static void main(String[] args)
 	{
+		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(VehicleService.class, TyreService.class,SpeakerService.class);
+		VehicleService vehicleService=context.getBean(VehicleService.class);
 
-		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(AppConfig.class, VehicleService.class);
+		TyreService tyreService=context.getBean(TyreService.class);
 
-		//use of @Beans
-		TyreService tyreBridgestone=context.getBean("tyre1",TyreService.class);
-		TyreService tyreMRF=context.getBean("tyre2",TyreService.class);
-
-		//use of @Component
-		SonySpeaker speakerSony=context.getBean(SonySpeaker.class);
-		speakerSony.setSpeakerBrand("Sony");
-		speakerSony.setSpeakerPrice(200.0);
-
-		BoshSpeaker speakerBose=context.getBean(BoshSpeaker.class);
-		speakerBose.setSpeakerBrand("Bose");
-		speakerBose.setSpeakerPrice(400.0);
-
-		Vehicle vehicle1=new Vehicle(tyreBridgestone,speakerSony);
-		Vehicle vehicle2=new Vehicle(tyreMRF,speakerBose);
-		VehicleService obj=new VehicleService(vehicle1,vehicle2);
-
-		obj.printVehicle();
-		obj.getMostExpensiveVehicle();
+		SpeakerService speakerService=context.getBean(SpeakerService.class);
+		vehicleService.printVehicle();
+		vehicleService.getMostExpensiveVehicle();
 	}
 
 }
