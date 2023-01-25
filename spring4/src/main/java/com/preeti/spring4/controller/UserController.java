@@ -6,23 +6,27 @@ package com.preeti.spring4.controller;
 import com.preeti.spring4.entity.User;
 import com.preeti.spring4.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/auth/user")
+@RequestMapping("/api/v1/auth/get")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserRepository userRepository;
 
-    @GetMapping("/getAll")
-    public List<User> getAll()
+    @GetMapping("/all")
+    public List<User> all()
     {
-       // return ResponseEntity.ok(userRepository.getAll()).getBody();
         return userRepository.getAll();
+    }
+
+    @GetMapping("/{username}")
+    public User getUser(@PathVariable String username)
+    {
+        return userRepository.findByFirstName(username);
     }
 }

@@ -18,8 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class AuthenticationController {
 
+
     private final AuthenticationService service;
 
+    /**
+     * @param request to register a new user and has authority of admin
+     * @return
+     */
     @PostMapping("/register")
     @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<AuthenticationResponse> register(
@@ -37,4 +42,15 @@ public class AuthenticationController {
     }
 
 
+    /**
+     * @param request To create Admin at the 1st time
+     * @return
+     */
+    @PostMapping("/register/admin")
+    public ResponseEntity<AuthenticationResponse> registerAdmin(
+            @RequestBody RegisterRequest request
+    )
+    {
+        return ResponseEntity.ok(service.register(request));
+    }
 }
