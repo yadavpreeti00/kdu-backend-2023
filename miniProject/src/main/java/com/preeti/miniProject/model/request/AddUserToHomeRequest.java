@@ -1,4 +1,4 @@
-package com.preeti.miniProject.model;
+package com.preeti.miniProject.model.request;
 
 import lombok.Builder;
 import lombok.Data;

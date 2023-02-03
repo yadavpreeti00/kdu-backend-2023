@@ -4,7 +4,7 @@ package com.preeti.miniProject.service;
 import com.preeti.miniProject.auth.AuthenticationRequest;
 import com.preeti.miniProject.auth.AuthenticationResponse;
 import com.preeti.miniProject.entity.UserEntity;
-import com.preeti.miniProject.model.UserRegisterRequest;
+import com.preeti.miniProject.model.request.UserRegisterRequest;
 import com.preeti.miniProject.repository.IUserRepository;
 
 
@@ -15,8 +15,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor

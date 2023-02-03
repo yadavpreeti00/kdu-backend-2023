@@ -1,7 +1,7 @@
 package com.preeti.miniProject.controller;
 
 import com.preeti.miniProject.auth.AuthenticationResponse;
-import com.preeti.miniProject.model.UserRegisterRequest;
+import com.preeti.miniProject.model.request.UserRegisterRequest;
 import com.preeti.miniProject.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

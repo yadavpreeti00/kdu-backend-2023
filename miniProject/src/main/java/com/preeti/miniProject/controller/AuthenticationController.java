@@ -3,8 +3,7 @@ package com.preeti.miniProject.controller;
 
 import com.preeti.miniProject.auth.AuthenticationRequest;
 import com.preeti.miniProject.auth.AuthenticationResponse;
-import com.preeti.miniProject.entity.UserEntity;
-import com.preeti.miniProject.model.UserRegisterRequest;
+import com.preeti.miniProject.model.request.UserRegisterRequest;
 import com.preeti.miniProject.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,11 +36,6 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 
-
-    /**
-     * @param request To create Admin at the 1st time
-     * @return
-     */
 
 
 }

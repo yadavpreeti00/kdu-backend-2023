@@ -1,7 +1,7 @@
 package com.preeti.miniProject.controller;
 
 import com.preeti.miniProject.service.UserDeviceService;
-import com.preeti.miniProject.model.AddDeviceRequest;
+import com.preeti.miniProject.model.request.AddDeviceRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

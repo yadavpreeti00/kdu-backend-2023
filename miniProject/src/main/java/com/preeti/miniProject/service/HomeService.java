@@ -1,15 +1,9 @@
 package com.preeti.miniProject.service;
 
 import com.preeti.miniProject.entity.Home;
-import com.preeti.miniProject.entity.UserEntity;
 import com.preeti.miniProject.exception.HomeNotFoundException;
 import com.preeti.miniProject.repository.IHomeRepository;
-import com.preeti.miniProject.repository.IUserHomeRepository;
-import com.preeti.miniProject.repository.IUserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -30,5 +24,11 @@ public class HomeService {
             throw new HomeNotFoundException(id);
         }
         return homeRepository.getReferenceById(id);
+    }
+
+    public Home updateAddress(String address, UUID homeId) {
+        var home=homeRepository.getReferenceById(homeId);
+        home.setAddress(address);
+        return homeRepository.save(home);
     }
 }

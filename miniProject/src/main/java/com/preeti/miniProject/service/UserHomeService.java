@@ -5,16 +5,13 @@ import com.preeti.miniProject.entity.UserEntity;
 import com.preeti.miniProject.entity.UserHome;
 import com.preeti.miniProject.exception.AdminRoleNotFoundException;
 import com.preeti.miniProject.exception.UserNotFoundException;
-import com.preeti.miniProject.model.AddUserToHomeRequest;
+import com.preeti.miniProject.model.request.AddUserToHomeRequest;
 import com.preeti.miniProject.repository.IHomeRepository;
 import com.preeti.miniProject.repository.IUserHomeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -53,31 +50,6 @@ public class UserHomeService {
         return userHomeAdmin;
     }
 
-//    public List<UserHome> getAllUsersOfHome(Home home) {
-//        return entityManager.createQuery("SELECT uh FROM UserHome uh WHERE uh.home = :home", UserHome.class)
-//                .setParameter("home", home)
-//                .getResultList();
-//    }
-
-//    public Boolean isAdmin(UserEntity authenticatedUser, Home home) {
-//
-//        List<UserHome> homeUsers=getAllUsersOfHome(home);
-//
-//        for(UserHome homeUser:homeUsers)
-//        {
-//            log.info(homeUser.toString());
-//            if((homeUser.getUserEntity().getId().equals(authenticatedUser.getId()))
-//                    && homeUser.getIsAdmin())
-//            {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
-
-
-
     public UUID addUser(AddUserToHomeRequest addUserToHomeRequest)
     {
         String authenticatedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -88,7 +60,6 @@ public class UserHomeService {
         var userHome=userHomeRepository.findByUserEntity_IdAndHome_Id(authenticatedUser.getId(),home.getId()).orElseThrow(() -> new UserNotFoundException(authenticatedUser.getId()));
         boolean isAdmin= userHome.getIsAdmin();
 
-        //Boolean isAdmin=isAdmin(authenticatedUser,home);
 
 
         if(! isAdmin)
@@ -102,5 +73,17 @@ public class UserHomeService {
                 .build();
          userHomeRepository.save(homeBasicUser);
          return home.getId();
+    }
+
+    public List<UserHome> listAllHome(UUID id) {
+        String authenticatedUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserEntity authenticatedUser = userService.getUserFromUsername(authenticatedUsername);
+
+        if(!authenticatedUser.getId().equals(id))
+        {
+            throw new RuntimeException();
+        }
+        log.info("listAllHome");
+        return userHomeRepository.findAllHomesByUserId(id);
     }
 }

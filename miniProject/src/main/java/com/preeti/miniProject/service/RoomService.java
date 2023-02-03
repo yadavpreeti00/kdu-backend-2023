@@ -2,17 +2,19 @@ package com.preeti.miniProject.service;
 
 import com.preeti.miniProject.entity.Room;
 import com.preeti.miniProject.entity.UserEntity;
-import com.preeti.miniProject.entity.UserHome;
 import com.preeti.miniProject.exception.AdminRoleNotFoundException;
+import com.preeti.miniProject.exception.RoomNotFoundException;
 import com.preeti.miniProject.exception.UserNotFoundException;
-import com.preeti.miniProject.model.AddRoomToHomeRequest;
-import com.preeti.miniProject.model.AddUserToHomeRequest;
+import com.preeti.miniProject.model.request.AddRoomToHomeRequest;
 import com.preeti.miniProject.repository.IHomeRepository;
 import com.preeti.miniProject.repository.IRoomRepository;
 import com.preeti.miniProject.repository.IUserHomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RoomService {
@@ -44,4 +46,16 @@ public class RoomService {
         return roomRepository.save(room);
     }
 
+    public Room getRoomFromId(UUID id)
+    {
+        if(!roomRepository.existsById(id))
+        {
+            throw new RoomNotFoundException(id);
+        }
+        return roomRepository.getReferenceById(id);
+    }
+
+    public List<Room> getAllRoom(UUID homeId) {
+        return roomRepository.findByHome_Id(homeId);
+    }
 }

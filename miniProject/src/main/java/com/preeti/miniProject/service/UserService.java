@@ -4,11 +4,8 @@ import com.preeti.miniProject.entity.UserEntity;
 import com.preeti.miniProject.exception.UserNotFoundException;
 import com.preeti.miniProject.repository.IUserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import java.util.UUID;
 
 @Service

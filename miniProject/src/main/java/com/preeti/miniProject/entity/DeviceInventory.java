@@ -1,13 +1,8 @@
 package com.preeti.miniProject.entity;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -37,8 +32,7 @@ public class DeviceInventory {
 
     @Column(nullable = false)
     private Boolean purchased;
-//    @CreationTimestamp
-//    private LocalDateTime manufactureDateTime;
+
 
     private String manufactureFactoryPlace;
 
